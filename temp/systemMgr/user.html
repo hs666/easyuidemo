@@ -1,0 +1,55 @@
+
+<div class="easyui-layout" fit="true">
+    <div data-options="region:'north',border:false" style="height: 80px;padding: 10px;overflow: hidden;" title="用户管理">
+        <form id="member_search_from" class="searcher-form">
+            <input name="userName" class="easyui-textbox field" label="账号：" labelWidth="45" style="width: 180px" >
+            <input name="realName" class="easyui-textbox field" label="姓名：" labelWidth="45">
+            <input name="telephone" class="easyui-textbox field" label="电话：" labelWidth="45">
+            <a class="easyui-linkbutton searcher" data-options="iconCls:'icon-search'">检索</a>
+            <a class="easyui-linkbutton reset" data-options="iconCls:'icon-redo'">重置</a>
+        </form>
+    </div>
+    <div data-options="region:'center',border:false" style="border-top: 1px solid #D3D3D3">
+        <table class="easyui-datagrid"
+               data-options="url:'datagrid_data1.json',method:'get',border:false,singleSelect:true,fit:true,fitColumns:true">
+            <thead>
+            <tr>
+                <th data-options="field:'itemid'" width="80">Item ID</th>
+                <th data-options="field:'productid'" width="100">Product ID</th>
+                <th data-options="field:'listprice',align:'right'" width="80">List Price</th>
+                <th data-options="field:'unitcost',align:'right'" width="80">Unit Cost</th>
+                <th data-options="field:'attr1'" width="150">Attribute</th>
+                <th data-options="field:'status',align:'center'" width="60">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td  >Item ID</td>
+                    <td  >Product ID</td>
+                    <td >List Price</td>
+                    <td  >Unit Cost</td>
+                    <td  >Attribute</td>
+                    <td >Status</td>
+                </tr>
+                <tr><td  >Item ID</td>
+                    <td  >Product ID</td>
+                    <td >List Price</td>
+                    <td  >Unit Cost</td>
+                    <td  >Attribute</td>
+                    <td >Status</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $.messager.alert('My Title', 'Are you confirm this?' );
+
+    $.messager.show({
+        title:'My Title',
+        msg:'Message will be closed after 5 seconds.',
+        timeout:5000,
+        showType:'slide'
+    });
+</script>
+
