@@ -55,3 +55,11 @@ input[type="checkbox"] { cursor: pointer;}
 .wu-footer { height:20px; padding:5px; text-align:center; overflow:hidden; background:#e0ecff;}
 
 
+.formdiv{}
+.formdiv div span{margin:5px 10px 5px 10px}
+.formdiv div span span{margin:0}
+.formdiv div label{margin-left:20px;width:65px;margin:5px 0 5px 10px;text-align: right}
+.formtextbox{width:165px;height: 50px;}
+.formtextbox2{width:447px;height: 50px;}
+
+

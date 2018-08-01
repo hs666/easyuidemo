@@ -1,4 +1,3 @@
-
 <div class="easyui-layout" fit="true">
     <div data-options="region:'north',border:false" style="height: 80px;padding: 10px;overflow: hidden;" title="用户管理">
         <form id="member_search_from" class="searcher-form">
@@ -16,33 +15,7 @@
     </div>
 </div>
 <div id="win">
-    <div class="easyui-layout" data-options="fit:true">
 
-        <div data-options="region:'center'" style="padding:10px;border: 0px solid #D3D3D3">
-            <form id="ff" class="easyui-form" method="post" data-options="novalidate:true">
-                <div style="margin-bottom:20px">
-                    <input class="easyui-textbox" name="name" style="width:100%" data-options="label:'Name:',required:true">
-                </div>
-                <div style="margin-bottom:20px">
-                    <input class="easyui-textbox" name="email" style="width:100%" data-options="label:'Email:',required:true,validType:'email'">
-                </div>
-                <div style="margin-bottom:20px">
-                    <input class="easyui-textbox" name="subject" style="width:100%" data-options="label:'Subject:',required:true">
-                </div>
-                <div style="margin-bottom:20px">
-                    <input class="easyui-textbox" name="message" style="width:100%;height:60px" data-options="label:'Message:',multiline:true">
-                </div>
-                <div style="margin-bottom:20px">
-                    <select class="easyui-combobox" name="language" label="Language" style="width:100%"><option value="ar">Arabic</option><option value="bg">Bulgarian</option><option value="ca">Catalan</option><option value="zh-cht">Chinese Traditional</option><option value="cs">Czech</option><option value="da">Danish</option><option value="nl">Dutch</option><option value="en" selected="selected">English</option><option value="et">Estonian</option><option value="fi">Finnish</option><option value="fr">French</option><option value="de">German</option><option value="el">Greek</option><option value="ht">Haitian Creole</option><option value="he">Hebrew</option><option value="hi">Hindi</option><option value="mww">Hmong Daw</option><option value="hu">Hungarian</option><option value="id">Indonesian</option><option value="it">Italian</option><option value="ja">Japanese</option><option value="ko">Korean</option><option value="lv">Latvian</option><option value="lt">Lithuanian</option><option value="no">Norwegian</option><option value="fa">Persian</option><option value="pl">Polish</option><option value="pt">Portuguese</option><option value="ro">Romanian</option><option value="ru">Russian</option><option value="sk">Slovak</option><option value="sl">Slovenian</option><option value="es">Spanish</option><option value="sv">Swedish</option><option value="th">Thai</option><option value="tr">Turkish</option><option value="uk">Ukrainian</option><option value="vi">Vietnamese</option></select>
-                </div>
-            </form>
-        </div>
-
-        <div data-options="region:'south',border:false" style="border-top: 1px solid #D3D3D3; text-align:right;padding:5px 20px 5px;">
-            <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="javascript:alert('ok')" style="width:80px">Ok</a>
-            <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="javascript:alert('cancel')" style="width:80px">Cancel</a>
-        </div>
-    </div>
 </div>
 <script>
     $('#dg').datagrid({
@@ -71,7 +44,9 @@
         },'-',{
             iconCls: 'icon-help',
             text:"help",
-            handler: function(){alert('help')}
+            handler: function(){
+                alert('help')
+            }
         }],
         queryParams:{
             id: '111',
@@ -112,27 +87,39 @@
         $("#member_search_from").form("clear");
     }
 
-    function editData(id){
-
+    function openDataDialog(title,url,params){
         $("#win").window({
-            title:"编辑用户信息",
-            width:600,
+            title:title,
+            width:620,
             height:400,
             modal:true,
             collapsible:false,
             minimizable:false,
-            maximizable:false
-
-
+            maximizable:false,
+            href:url
         });
+    }
+
+    function editData(id){
+
+        openDataDialog("编辑","temp/systemMgr/opendialog.html",id);
 
     }
 
     function deleteData(id){
-
+        $.messager.confirm("Confirm","是否删除id："+id+"的信息?",function (r) {
+            if(r){
+                $.messager.show({
+                    title:'操作提示',
+                    msg:id+"删除完成！",
+                    timeout:3000,
+                    showType:'slide',
+                    width:250,
+                    height:100
+                });
+            }
+        });
     }
-
-
 </script>
 
 

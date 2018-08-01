@@ -1,0 +1,72 @@
+<div class="easyui-layout" data-options="fit:true">
+<style type="text/css">
+
+</style>
+    <div data-options="region:'center'" style="padding:10px;border: 0px solid #D3D3D3">
+        <form id="ff" class="easyui-form formdiv" method="post" data-options="validate:true">
+            <div>
+                <label class="textbox-label">Name:</label>
+                <input class="easyui-textbox formtextbox" name="name"  data-options="required:true,validType:'length[1,20]'" value="11">
+                <label class="textbox-label">nickname:</label>
+                <input class="easyui-textbox formtextbox" name="nickname"  data-options="required:true">
+            </div>
+            <div>
+                <label class="textbox-label">email:</label>
+                <input class="easyui-textbox formtextbox" name="email"  data-options="required:true,validType:'email'">
+            </div>
+            <div>
+                <label class="textbox-label">subject:</label>
+                <input class="easyui-textbox formtextbox" name="subject"  data-options="required:true">
+            </div>
+            <div>
+                <label class="textbox-label">message:</label>
+                <input class="easyui-textbox formtextbox2" style="height: 50px" name="message"  data-options="multiline:true,required:true">
+            </div>
+            <div>
+                <label class="textbox-label">language:</label>
+                <select class="easyui-combobox formtextbox2" name="language"  data-options="required:true" >
+                    <option value="ar">Arabic</option>
+                    <option value="bg">Bulgarian</option>
+                    <option value="ca">Catalan</option>
+                    <option value="zh-cht">Chinese Traditional</option>
+                    <option value="cs">Czech</option>
+                    <option value="da">Danish</option>
+                    <option value="nl">Dutch</option>
+                    <option value="en" selected="selected">English</option>
+                </select>
+            </div>
+        </form>
+    </div>
+
+    <div data-options="region:'south',border:false" style="border-top: 1px solid #D3D3D3; text-align:right;padding:5px 20px 5px;">
+        <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="javascript:msgOk('ok')" style="width:80px">Ok</a>
+        <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="javascript:msgCancle('cancel')" style="width:80px">Cancel</a>
+    </div>
+</div>
+
+<script >
+    //清除表单
+    $('#ff').form("clear");
+    function msgOk(){
+        $.messager.progress();	// display the progress bar
+        $('#ff').form('submit', {
+            url: "/systemMgr/menu",
+            onSubmit: function(){
+                var isValid = $(this).form('validate');
+                if (!isValid){
+                    $.messager.progress('close');	// hide progress bar while the form is invalid
+                }
+                return isValid;	// return false will stop the form submission
+            },
+            success: function(){
+                $.messager.progress('close');	// hide progress bar while submit successfully
+            }
+        });
+
+
+    }
+
+    function msgCancle(){
+        $("#win").window("close");
+    }
+</script>
